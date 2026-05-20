@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>PowerLife — Головна сторінка</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            background-color: #fcb788;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+        }
+
+        header {
+            background-color: #fbc4b7; 
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: "Berlin Sans FB", sans-serif;
+            color: #4a4a4a;
+            margin: 0;
+            font-size: 40px;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            background-color: transparent; 
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #4a4a4a;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 20px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #ff6f61;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 10px;
+        }
+
+        article {
+            background-color: #fcb788;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        h2, h3 {
+            font-family: "Berlin Sans FB", sans-serif;
+            color: #4a4a4a;
+            letter-spacing: 1px;
+        }
+
+        img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .comments-section {
+            background-color: #f0f3f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .comments-section input, .comments-section textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 16px;
+        }
+
+        .comments-section button {
+            font-family: "Berlin Sans FB", sans-serif;
+            background-color: #fbc4b7;
+            color: #4a4a4a;
+            border: none;
+            padding: 10px 25px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .comments-section button:hover {
+            background-color: #ffaf9e;
+        }
+
+        .comment-item {
+            background-color: #ffffff;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #fbc4b7;
+        }
+
+        footer {
+            background-color: transparent; 
+            padding: 15px;
+            text-align: center;
+            color: #4a4a4a;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>PowerLife</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Головна</a>
+        <a href="trainings.html">Тренування</a>
+        <a href="map.html">Карта сайту</a>
+    </nav>
+
+    <div class="container">
+        <article>
+            <h2>Про наш сайт</h2>
+            <p>PowerLife — це сайт про спорт, здоров’я та саморозвиток. Він створений для людей, які хочуть покращити свою фізичну форму, стати сильнішими та вести активний спосіб життя.</p>
+            
+            <h3>Що можна робити на нашому сайті:</h3>
+            <ul>
+                <li>Переглядати програми тренувань для дому та залу</li>
+                <li>Читати поради щодо правильного харчування</li>
+                <li>Дізнаватися про спортивне харчування і як його використовувати</li>
+                <li>Дивитися мотиваційні статті та історії успіху</li>
+            </ul>
+
+            <h3>Як працює сайт:</h3>
+            <p>Користувач заходить на сайт через браузер, обирає потрібний розділ і отримує інформацію. Якщо він реєструється, то отримує більше можливостей — наприклад, зберігати тренування або слідкувати за своїм прогресом.</p>
+            
+            <img src="photo1.jpeg" alt="Спорт і тренування">
+
+            <h3>Мотиваційне відео та аудіо</h3>
+            <audio controls>
+    <source src="audio.flac" type="audio/mpeg">
+</audio>
+            <video controls style="width: 100%; max-height: 400px; margin-top: 15px; border-radius: 8px;">
+    <source src="video.mp4" type="video/mp4">
+    Ваш браузер не підтримує тег відео.
+</video>
+        </article>
+
+        <div class="comments-section">
+            <h3>Залишити коментар</h3>
+            <input type="text" id="author" placeholder="Ваше ім'я або нікнейм">
+            <textarea id="msg" rows="3" placeholder="Напишіть свій коментар тут..."></textarea>
+            <button onclick="dodatyKomentar()">Відправити</button>
+
+            <div id="spysok-komentariv"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 PowerLife. Всі права захищені.</p>
+    </footer>
+
+    <script>
+        function dodatyKomentar() {
+            var imya = document.getElementById('author').value;
+            var tekst = document.getElementById('msg').value;
+
+            if (imya == "" || tekst == "") {
+                alert("Будь ласка, заповніть усі поля!");
+                return;
+            }
+
+            var spysok = document.getElementById('spysok-komentariv');
+            var novyiBlok = document.createElement('div');
+            novyiBlok.className = 'comment-item';
+            novyiBlok.innerHTML = '<strong>' + imya + ':</strong> <p style="margin: 5px 0 0 0;">' + tekst + '</p>';
+
+            spysok.appendChild(novyiBlok);
+
+            document.getElementById('author').value = "";
+            document.getElementById('msg').value = "";
+        }
+    </script>
+</body>
+</html>
